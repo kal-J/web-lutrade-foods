@@ -1,59 +1,35 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import red from "@material-ui/core/colors/red";
+
 import "./App.scss";
 import colors from "./components/layout/colors";
+import Menu from "./components/menu";
+// import Vendor from "./components/vendor/Info";
+import { CssBaseline } from "@material-ui/core";
+import Routes from "./routes";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: colors.primary },
+    secondary: { main: colors.light },
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+  status: {
+    danger: red,
   },
-  title: {
-    flexGrow: 1,
-  },
-  navbar: {
-    backgroundColor: colors.primary,
-  },
-}));
-
-const NavBar = () => {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <AppBar className={classes.navbar} position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            lutrade
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-};
+});
 
 const App = () => {
   return (
-    <div className="gradient">
-      <NavBar />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <div className="gradient">
+        <Menu />
+
+        <Routes />
+      </div>
+    </ThemeProvider>
   );
 };
 

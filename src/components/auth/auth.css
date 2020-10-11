@@ -1,0 +1,10 @@
+.auth a {
+  color: #db5a6b;
+  text-decoration: none;
+}
+
+.auth input[type="text"] {
+  border-radius: 4px;
+  border: #2d014d solid;
+  padding: 4px;
+}

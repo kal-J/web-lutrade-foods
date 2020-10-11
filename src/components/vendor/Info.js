@@ -34,7 +34,7 @@ const Info = () => {
 
 const Menu = () => {
   return (
-    <div className="container">
+    <div id='restaurant_menu' className="container">
       <div className="align-center">
         <div>
           <label htmlFor="meal">Meal</label>
