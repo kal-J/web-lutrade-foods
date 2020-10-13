@@ -1,0 +1,9 @@
+$primary-color: #db5a6b;
+
+div.row.error {
+  display: flex;
+  justify-content: center;
+  p {
+    color: $primary-color;
+  }
+}
