@@ -10,6 +10,7 @@ import './App.scss';
 import Loading from './components/loading/Loading';
 import { setLoading, setUser } from './redux/actions';
 import firebase from './firebase';
+import Footer from './components/footer/Footer';
 
 const theme = createMuiTheme({
   palette: {
@@ -55,6 +56,8 @@ const App = (props) => {
         <Menu />
 
         <Routes />
+
+        <Footer />
       </div>
     </ThemeProvider>
   );

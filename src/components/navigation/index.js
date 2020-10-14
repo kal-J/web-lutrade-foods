@@ -6,11 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import MobileRightMenuSlider from '@material-ui/core/Drawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
+import './styles.scss';
 import {
   AppBar,
   Toolbar,
   ListItem,
-  ListItemIcon,
   IconButton,
   ListItemText,
   Divider,

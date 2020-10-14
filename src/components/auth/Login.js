@@ -128,7 +128,7 @@ const Login = (props) => {
 
           <div className={classes.form_footer}>
             <Typography>
-              <Link>Forgot password ?</Link>
+              <Link to='/forgot-password'>Forgot password ?</Link>
             </Typography>
             <Typography style={{ margin: '1em' }}>
               Dont have an account ? <Link to="/signup">signup</Link>
