@@ -7,7 +7,6 @@ const Step3 = (props) => {
   const [inputInfo, setInputInfo] = useState({});
   const [action, setAction] = useState('ADD_IMAGE');
   const restaurant_name = props.redux_state.restaurant.name;
-  const { setLoading, setError } = props;
 
   return (
     <>
