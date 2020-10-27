@@ -8,7 +8,8 @@ import { Redirect, Route } from 'react-router-dom';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
 import LandingPage from '../components/LandingPage';
-import Menu from '../components/restaurant/Menu';
+import Menu from '../components/restaurant/menu/Menu';
+import MenuIndex from '../components/restaurant/menu/Index';
 import Dashboard from '../components/restaurant/Dashboard';
 
 const index = (props) => {
@@ -75,7 +76,22 @@ const index = (props) => {
 
       {/** Protected Routes */}
       <Route
+        exact
         path="/restaurant/menu"
+        render={(props) => {
+          if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+          }
+          return (
+            <Box>
+              <MenuIndex {...props} />
+            </Box>
+          );
+        }}
+      />
+      <Route
+        exact
+        path="/restaurant/menu/add-item"
         render={(props) => {
           if (!isAuthenticated) {
             return <Redirect to="/login" />;
@@ -89,6 +105,7 @@ const index = (props) => {
       />
 
       <Route
+        exact
         path="/restaurant/dashboard"
         render={(props) => {
           if (!isAuthenticated) {

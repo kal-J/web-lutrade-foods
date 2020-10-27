@@ -2,7 +2,9 @@ $primary-color: #db5a6b;
 
 div.row.error {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  width: 100%;
   p {
     color: $primary-color;
   }

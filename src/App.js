@@ -8,7 +8,7 @@ import { red } from '@material-ui/core/colors';
 import colors from './components/layout/colors';
 import './App.scss';
 import Loading from './components/loading/Loading';
-import { setLoading, setUser } from './redux/actions';
+import { setLoading, setUser, setRestaurant, setError } from './redux/actions';
 import firebase from './firebase';
 import Footer from './components/footer/Footer';
 
@@ -24,12 +24,32 @@ const theme = createMuiTheme({
 
 const App = (props) => {
   const { loading, error } = props.redux_state;
-  const { setLoading, setUser } = props;
+  const { setLoading, setUser, setRestaurant } = props;
 
   useEffect(() => {
     setLoading(true);
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        const getUserRestaurant = async () => {
+          // Make the initial query
+          const query = await firebase
+            .firestore()
+            .collection('restaurants')
+            .where('admin_uid', '==', user.uid)
+            .get();
+
+          if (!query.empty) {
+            const snapshot = query.docs[0];
+            const restaurant_data = snapshot.data();
+            const restaurant_id = snapshot.id;
+
+            setRestaurant({ id: restaurant_id, ...restaurant_data });
+          } else {
+            setError('There was an error in retrieving restaurant information');
+          }
+        };
+        getUserRestaurant();
+
         setUser(user);
       }
     });
@@ -63,4 +83,6 @@ const App = (props) => {
   );
 };
 
-export default connect(mapStateToProps, { setLoading, setUser })(App);
+export default connect(mapStateToProps, { setLoading, setUser, setRestaurant })(
+  App
+);

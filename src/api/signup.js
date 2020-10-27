@@ -14,9 +14,9 @@ const signup = (data, setLoading, setError, setUser) => {
       firebase
         .firestore()
         .collection('restaurants')
-        .doc(restaurant_name)
-        .set({
+        .add({
           admin_uid: user.uid,
+          name: restaurant_name,
         })
         .then(() => {
           setUser(user);

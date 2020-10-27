@@ -1,0 +1,231 @@
+$secondary-color: #db5a6b;
+$primary-color: #2d014d;
+
+.container-restaurant-menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+
+  input,
+  select,
+  textarea {
+    border-radius: 4px;
+    border: #2d014d solid;
+    padding: 4px;
+  }
+
+  .textarea_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    textarea {
+      width: 100%;
+      resize: none;
+    }
+  }
+
+  h3,
+  h4 {
+    display: flex;
+    justify-content: center;
+  }
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    margin: 0.5em auto;
+  }
+  .row-btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em auto;
+    width: 25%;
+  }
+  .align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .row-select {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 25%;
+  }
+
+  .row-select-meals {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    h5 {
+      margin: 0 2em;
+      padding: 2em;
+      border: $secondary-color solid 1px;
+      border-radius: 4px;
+    }
+
+    h5:hover {
+      background-color: $secondary-color;
+      cursor: pointer;
+    }
+  }
+
+  .meal-item-image {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border: $secondary-color solid 1px;
+    background-color: #000;
+    border-radius: 4px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #000;
+      z-index: 1;
+      opacity: 0.1;
+    }
+
+    .action-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      z-index: 2;
+      top: 25%;
+      left: 0;
+      right: 0;
+
+      .action {
+        width: fit-content;
+        background-color: $secondary-color;
+        padding: 1em;
+        border-radius: 4px;
+      }
+    }
+
+    .add-symbol {
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    h5 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .meal-item-image:hover {
+    cursor: pointer;
+    background-color: $secondary-color;
+  }
+
+  .menu-add-on {
+    .addon-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      p {
+        color: $secondary-color;
+      }
+
+      span.addon {
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.2em;
+        width: fit-content;
+        border: $secondary-color solid 1px;
+        border-radius: 4px;
+        background-color: $primary-color;
+        margin: 0 0.2em;
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $secondary-color;
+          margin: 0 0 0 0.2em;
+          padding: 0 0.2em;
+          border-left: $secondary-color solid 1px;
+        }
+
+        span:hover {
+          cursor: pointer;
+          color: #fff;
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2em auto;
+
+      div {
+        background-color: #fff;
+        padding: 0.5em;
+        border-radius: 4px;
+
+        input {
+          border: 0;
+          margin: 0 0.2em;
+        }
+
+        input:focus {
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+// Media queries
+
+@media only screen and (max-width: 1200px) {
+  /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+}
+@media only screen and (max-width: 425px) {
+  /*Small smartphones [325px -> 425px]*/
+
+  .container-restaurant-menu {
+    .row,
+    .row-btn {
+      width: 80%;
+    }
+
+    .row-select-meals {
+      h5 {
+        padding: 1em;
+      }
+    }
+  }
+}

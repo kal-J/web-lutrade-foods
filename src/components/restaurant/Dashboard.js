@@ -24,7 +24,7 @@ const Dashboard = () => {
       </div>
 
       <div className="actions">
-        <Link to='/#'>
+        <Link to='/restaurant/menu'>
           <div className="action">
             <RestaurantMenuIcon fontSize="large" />
             <Typography>MENU</Typography>

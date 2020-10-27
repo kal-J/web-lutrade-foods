@@ -1,6 +1,7 @@
 $secondary-color: #db5a6b;
 
 div.dashboard_container {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +21,6 @@ div.dashboard_container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 300px;
     width: 100%;
     background-color: #000;
     color: #fff;

@@ -4,6 +4,10 @@ const INITIAL_STATE = {
   user: {
     isAuthenticated: false,
   },
+  meal_item: {},
+  restaurant: {
+    menu: [],
+  },
 };
 
 const mainReducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +21,16 @@ const mainReducer = (state = INITIAL_STATE, action) => {
       };
       return newState;
     }
+    case 'SETRESTAURANT': {
+      const restaurant = action.payload;
+
+      const newState = {
+        ...state,
+        restaurant: { ...state.restaurant, ...restaurant },
+      };
+      return newState;
+    }
+
     case 'SETLOADING': {
       const value = action.payload;
 
@@ -32,6 +46,15 @@ const mainReducer = (state = INITIAL_STATE, action) => {
       const newState = {
         ...state,
         error: error,
+      };
+      return newState;
+    }
+    case 'ADDMEALITEM': {
+      const meal_item = action.payload;
+
+      const newState = {
+        ...state,
+        meal_item: { ...state.meal_item, ...meal_item },
       };
       return newState;
     }
