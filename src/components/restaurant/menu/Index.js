@@ -95,7 +95,7 @@ const Index = (props) => {
         <section className="menu-item">
           <span className="menu-item-image">
             <img
-              src="/images/meal-item-placeholder.png"
+              src="/images/rolex.jpg"
               alt="Meal Item placeholder"
             />
           </span>
