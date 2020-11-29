@@ -14,7 +14,7 @@ const ActionButtons = (props) => {
         variant="contained"
         onClick={() => {
           if (step === 1) {
-            return;
+            return props.history.push('/restaurant/menu');
           }
           if (step === 2) {
             return setStep(step - 1);
@@ -69,6 +69,8 @@ const ActionButtons = (props) => {
               return setError(error.message);
             }
 
+            console.log(JSON.stringify(value, null, 4));
+
             setError(null); // clear error
 
             const menu_item = {
@@ -79,6 +81,7 @@ const ActionButtons = (props) => {
             addMenuItem(menu_item, setLoading, setError, restaurant).then(
               () => {
                 alert('New Item has been added on the menu');
+                props.history.push('/restaurant/menu');
               }
             );
           }

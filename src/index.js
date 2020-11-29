@@ -16,7 +16,7 @@ window.onload = () => {
     maximum-scale=1.0,
     user-scalable=0`
   );
-  initialWindowHeight = `${document.documentElement.offsetHeight} px`;
+  initialWindowHeight = `${document.documentElement.offsetHeight}px`;
 };
 
 window.onresize = () => {
@@ -28,7 +28,7 @@ window.onresize = () => {
 
   metaViewport.setAttribute(
     'content',
-    `height=${initialWindowHeight}px,
+    `height=${initialWindowHeight},
     width=device-width,
     initial-scale=1.0`
   );

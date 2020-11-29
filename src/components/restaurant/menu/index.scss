@@ -2,6 +2,10 @@ $secondary-color: #db5a6b;
 $primary-color: #2d014d;
 
 .main-menu-container {
+  .hero-section {
+    margin: 0;
+    padding: 0;
+  }
   .restaurant-cover-image-wrapper {
     display: flex;
     flex-direction: column;
@@ -74,7 +78,7 @@ $primary-color: #2d014d;
         width: 100px;
         background-color: #000;
         margin: 1em;
-        img{
+        img {
           width: 100%;
           height: auto;
         }

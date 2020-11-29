@@ -5,6 +5,12 @@ const addMenuItem = (data, setLoading, setError, restaurant) => {
 
   return new Promise((resolve, reject) => {
     setLoading(true);
+
+    if (!id) {
+      setError('Failed to read restaurant information from the server');
+      setLoading(false);
+      return reject({ status: 'failure' });
+    }
     firebase
       .firestore()
       .collection('restaurants')

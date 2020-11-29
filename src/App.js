@@ -23,39 +23,49 @@ const theme = createMuiTheme({
 });
 
 const App = (props) => {
-  const { loading, error } = props.redux_state;
+  const { loading, error, user } = props.redux_state;
   const { setLoading, setUser, setRestaurant } = props;
 
   useEffect(() => {
     setLoading(true);
+    console.log('\n\n\n\n', 'onAuthSateChanged hook began execution...');
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        const getUserRestaurant = async () => {
-          // Make the initial query
-          const query = await firebase
-            .firestore()
-            .collection('restaurants')
-            .where('admin_uid', '==', user.uid)
-            .get();
+        setUser(user);
+      }
+    });
 
-          if (!query.empty) {
-            const snapshot = query.docs[0];
-            const restaurant_data = snapshot.data();
-            const restaurant_id = snapshot.id;
+    setLoading(false);
+    console.log('\n\n\n\n', 'onAuthSateChanged hook ended execution...');
+
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    console.log('\n\n\n\n', 'firebase Firestore hook began execution...');
+    if (user.uid) {
+      console.log('\n\n\n\n', user.uid, '\n\n\n');
+      firebase
+        .firestore()
+        .collection('restaurants')
+        .where('admin_uid', '==', user.uid)
+        .onSnapshot((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const restaurant_snapshot = querySnapshot.docs[0];
+            const restaurant_data = restaurant_snapshot.data();
+            const restaurant_id = restaurant_snapshot.id;
+
+            console.log(JSON.stringify(restaurant_data, null, 2));
 
             setRestaurant({ id: restaurant_id, ...restaurant_data });
           } else {
             setError('There was an error in retrieving restaurant information');
           }
-        };
-        getUserRestaurant();
-
-        setUser(user);
-      }
-    });
-    setLoading(false);
-    // eslint-disable-next-line
-  }, []);
+        });
+    }
+    console.log('\n\n\n\n', 'firebase Firestore hook ended execution...');
+  }, [user, setRestaurant]);
 
   if (loading) {
     return (

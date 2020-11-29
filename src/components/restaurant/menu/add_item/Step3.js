@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import firebase from '../../../../firebase';
 import ActionButtons from './ActionButtons';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Loading from '../../../loading/Loading';
 
 const Step3 = (props) => {
   const [inputInfo, setInputInfo] = useState({});
+  const [loading, setLoading] = useState(false);
   const [action, setAction] = useState('ADD_IMAGE');
   const restaurant_name = props.redux_state.restaurant.name;
 
   return (
     <>
+      {loading && <Loading />}
       <div className="row">
         <h4>ADD A MEAL ITEM</h4>
 
@@ -64,23 +67,30 @@ const Step3 = (props) => {
               imageElement.src = URL.createObjectURL(file);
               imageElement.style.display = 'block';
 
+              setLoading(true);
+
               // Add overlay
               const imageWrapper = document.querySelector('.meal-item-image');
               const overlay = document.createElement('div');
               overlay.classList.add('overlay');
               imageWrapper.appendChild(overlay);
 
+              const uploadFileName = `${Date.now()}-${file.name}`;
+
               // save file to cloud
               const storageRef = firebase
                 .storage()
-                .ref(`${restaurant_name}/${file.name}`);
+                .ref(`${restaurant_name}/${uploadFileName}`);
+
               storageRef.put(file).then((uploadedFile) => {
                 storageRef.getDownloadURL().then((downloadURL) => {
                   console.log('File available at', downloadURL);
                   setInputInfo({
                     ...inputInfo,
                     meal_item_image_url: downloadURL,
+                    meal_item_image_name: uploadFileName,
                   });
+                  setLoading(false);
                 });
               });
 
