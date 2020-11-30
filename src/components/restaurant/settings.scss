@@ -1,0 +1,122 @@
+$secondary-color: #db5a6b;
+$primary-color: #2d014d;
+
+.settings_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+
+  h3{
+      padding: 0;
+  }
+
+  select {
+    color: $secondary-color;
+    font-weight: bolder;
+    font-size: medium;
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 4px;
+  }
+
+  .row-btn {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em auto 0;
+    width: 25%;
+  }
+
+  .menu-add-on {
+    .addon-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      p {
+        color: $secondary-color;
+      }
+
+      span.addon {
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.2em;
+        width: fit-content;
+        border: $secondary-color solid 1px;
+        border-radius: 4px;
+        background-color: $primary-color;
+        margin: 0 0.2em;
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $secondary-color;
+          margin: 0 0 0 0.2em;
+          padding: 0 0.2em;
+          border-left: $secondary-color solid 1px;
+        }
+
+        span:hover {
+          cursor: pointer;
+          color: #fff;
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 1em auto;
+
+      div {
+        background-color: #fff;
+        padding: 0.5em;
+        border-radius: 4px;
+
+        input {
+          border: 0;
+          margin: 0 0.2em;
+        }
+
+        input:focus {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .delivery_fee {
+    display: flex;
+    flex-direction: column;
+
+    input{
+        border-radius: 4px;
+    }
+    
+  }
+}
+
+// Media queries
+
+@media only screen and (max-width: 1200px) {
+  /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+
+  div.settings_wrapper {
+    .row-btn {
+      width: 80%;
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  /*Small smartphones [325px -> 425px]*/
+}

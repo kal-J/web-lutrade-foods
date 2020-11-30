@@ -1,0 +1,92 @@
+$secondary-color: #db5a6b;
+$primary-color: #2d014d;
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 100%;
+
+  align-items: center;
+  margin: 1em auto;
+  width: 80%;
+  border-radius: 4px;
+  overflow-y: scroll;
+
+  .order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    margin: 1em auto;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  p,
+  h5 {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0 2em;
+    margin: 0.1em;
+  }
+  p.addons {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+      border: 1px solid;
+      border-color: $secondary-color;
+      color: $primary-color;
+      padding: 0.2em;
+      border-radius: 4px;
+      margin: 0.1em;
+    }
+  }
+  hr {
+    width: 100%;
+    height: 2px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    .btn-ready-pickup {
+      background-color: #073d07;
+      color: #fff;
+    }
+
+    button {
+      margin: 0.5em 2em;
+      padding: 0.5em;
+      font-weight: bold;
+      font-size: small;
+    }
+  }
+}
+
+// Media queries
+
+@media only screen and (max-width: 1200px) {
+  /*Tablets [601px -> 1200px]*/
+}
+@media only screen and (max-width: 600px) {
+  /*Big smartphones [426px -> 600px]*/
+
+  .orders {
+    .actions {
+      justify-content: space-evenly;
+
+      button {
+        margin: 0.5em 0;
+        padding: 0.2em;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  /*Small smartphones [325px -> 425px]*/
+}

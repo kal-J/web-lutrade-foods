@@ -11,6 +11,8 @@ import LandingPage from '../components/LandingPage';
 import Menu from '../components/restaurant/menu/Menu';
 import MenuIndex from '../components/restaurant/menu/Index';
 import Dashboard from '../components/restaurant/Dashboard';
+import Settings from '../components/restaurant/Settings';
+import Orders from '../components/restaurant/Orders';
 
 const index = (props) => {
   const { isAuthenticated } = props.redux_state.user;
@@ -106,6 +108,20 @@ const index = (props) => {
 
       <Route
         exact
+        path="/restaurant/settings"
+        render={(props) => {
+          if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+          }
+          return (
+            <Box>
+              <Settings {...props} />
+            </Box>
+          );
+        }}
+      />
+      <Route
+        exact
         path="/restaurant/dashboard"
         render={(props) => {
           if (!isAuthenticated) {
@@ -118,6 +134,21 @@ const index = (props) => {
           );
         }}
       />
+      <Route
+        exact
+        path="/restaurant/orders"
+        render={(props) => {
+          if (!isAuthenticated) {
+            return <Redirect to="/login" />;
+          }
+          return (
+            <Box>
+              <Orders {...props} />
+            </Box>
+          );
+        }}
+      />
+
     </>
   );
 };

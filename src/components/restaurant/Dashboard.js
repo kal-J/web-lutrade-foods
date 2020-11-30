@@ -156,7 +156,7 @@ const Dashboard = (props) => {
             </div>
           </Link>
 
-          <Link to="/#">
+          <Link to="/restaurant/orders">
             <div className="action">
               <ShoppingCartOutlinedIcon fontSize="large" />
               <Typography>ORDERS</Typography>
@@ -172,7 +172,7 @@ const Dashboard = (props) => {
             </div>
           </Link>
 
-          <Link to="/#">
+          <Link to="/restaurant/settings">
             <div className="action">
               <SettingsIcon fontSize="large" />
               <Typography>SETTINGS</Typography>

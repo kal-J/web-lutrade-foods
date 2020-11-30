@@ -17,9 +17,18 @@ const mainReducer = (state = INITIAL_STATE, action) => {
 
       const newState = {
         ...state,
-        user: { isAuthenticated: true, ...user },
+        user: {
+          get isAuthenticated() {
+            if (user.uid) {
+              return true;
+            }
+            return false;
+          },
+          ...user,
+        },
       };
       return newState;
+      
     }
     case 'SETRESTAURANT': {
       const restaurant = action.payload;
